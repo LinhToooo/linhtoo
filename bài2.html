@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bài 2</title>
+	<style type="text/css">
+	body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-image: url("https://images.pexels.com/photos/8271921/pexels-photo-8271921.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 100vh;
+	}
+		#grid_container {
+			display: grid;
+			background-color: #eaeaea;
+			grid-template-columns: auto auto auto;
+			height: 80px;
+			width: 550px;
+			border-radius: 0px 0px 7px 7px;
+		}
+		.grid {
+			box-sizing: border-box;
+			display: flex;
+			flex-flow: wrap column;
+			justify-content: center;
+			align-content: center;
+		}
+		input[type="number"] {
+			width: 150px;
+			margin-left: 10px;
+			padding: 5px 0px;
+		}
+		input[type="button"] {
+			background-color: #1e78fa;
+			border: 1px solid #1e78fa;
+			border-radius: 7px;
+		}
+		input[type="button"]:active {
+			background-color: #80cc00;
+		}
+		#nam_am_lich {
+			display: flex;
+			align-items: center;
+			background-color: #f3f5f6b2;
+			border: 1px solid #e4e4e4c4;
+			height: 20px;
+			width: 150px;
+			padding: 5px 0px;
+			margin-right: 12px;
+			color: grey;
+		}
+		#tieu_de {
+			width: 550px;
+			height: 40px;
+			background-color: #e5e5e5;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			backdrop-filter: drop;
+			border-radius: 7px 7px 0px 0px;
+		}
+		.tieu_de {
+			font-family: Arial;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<div id="tieu_de">
+			<p class="tieu_de"><i>Tính năm Âm Lịch</i></p>
+		</div>
+		<div id="grid_container">
+			<div class="grid 1">
+				<input id="nam_duong_lich" type="number" name="" placeholder="Năm Dương Lịch">
+			</div>
+			<div class="grid 2">
+				<input onclick="tinh_nam_am()" type="button" name="" value="=>">
+			</div>
+			<div class="grid 3">
+				<p id="nam_am_lich">Năm Âm Lịch</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function tinh_nam_am(){
+			let nam = parseInt(document.getElementById('nam_duong_lich').value);
+			let so_du_can = (nam - 3) % 10;
+			let so_du_chi = (nam -3) % 12;
+			let can;
+			let chi;
+			switch(so_du_can) {
+				case 0:
+				can = 'Quý';
+				break;
+				case 1:
+				can = "Giáp";
+				break;
+				case 2:
+				can = 'Ất';
+				break;
+				case 3:
+				can = 'Bính';
+				break;
+				case 4:
+				can = 'Đinh';
+				break;
+				case 5:
+				can = 'Mậu';
+				break;
+				case 6:
+				can = 'Kỷ';
+				break;
+				case 7:
+				can = 'Canh';
+				break;
+				case 8:
+				can = 'Tân';
+				break;
+				case 9:
+				can = 'Nhâm';
+				break;
+
+				default:
+				break;
+			}
+			switch(so_du_chi) {
+				case 0:
+				chi = 'Hợi';
+				break;
+				case 1:
+				chi = 'Tý';
+				break;
+				case 2:
+				chi = 'Sửu';
+				break;
+				case 3:
+				chi = 'Dần';
+				break;
+				case 4:
+				chi = 'Mão';
+				break;
+				case 5:
+				chi = 'Thìn';
+				break;
+				case 6:
+				chi = 'Tỵ';
+				break;
+				case 7:
+				chi = 'Ngọ';
+				break;
+				case 8:
+				chi = 'Mùi';
+				break;
+				case 9:
+				chi = 'Thân';
+				break;
+				case 10:
+				chi = 'Dậu';
+				break;
+				case 11:
+				chi = 'Tuất';
+				break;
+				case 12:
+				chi = 'Hợi';
+				break;
+
+				default:
+				break;
+			}
+			document.getElementById('nam_am_lich').innerHTML= ` ${can} ${chi} `;
+		}
+	</script>
+</body>
+</html>
