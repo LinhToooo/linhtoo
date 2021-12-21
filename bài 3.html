@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bài 3</title>
+	<style type="text/css">
+		body {
+			background-image: url('https://images.pexels.com/photos/8271921/pexels-photo-8271921.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+			background-size: cover;
+			background-repeat: no-repeat;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		#div_tong {
+			width: 500px;
+			height: 200px;
+		}
+		#div_tren {
+			background-color: #b49695;
+			height: 50px;
+			width: 500px;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 15px 15px 0px 0px;
+		}
+		#div_tren > p {
+			font-size: 30px;
+			font-weight: bold;
+			border-radius: 15px 15px 0px 0px;
+		}
+		#div_duoi {
+			width: 500px;
+			height: 150px;
+			display: flex;
+			flex-flow: wrap column;
+			background-color: #eaeaea;
+			justify-content: center;
+			border-radius: 0px 0px 7px 7px;
+		}
+		#ngay_thang_nam {
+			width: 300px;	
+			background-color: whitesmoke;
+			height: 30px;
+			text-align: center;
+			box-sizing: border-box;
+			padding: 5px 0px;
+			border-radius: 5px;
+		}
+		.input {
+			display: flex;
+			justify-content: center;
+			border-radius: 0px 0px 7px 7px;
+		}
+		input[type="number"] {
+			margin: 20px 8px;
+			padding: 5px 0px;
+			border-radius: 5px;
+			box-sizing: border-box;
+			border: 1px solid whitesmoke;
+			text-align: center;
+		}
+		input[type="button"] {
+			width: 100px;
+			background-color: #1e78fa;
+			border: 1px solid #1e78fa;
+			border-radius: 7px;
+		}
+		input[type="button"]:active {
+			background-color: #80cc00;
+		}
+		.button {
+			display: flex;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="div_tong">
+		<div id="div_tren">
+			<p><i>Tính ngày trong tháng</i></p>
+		</div>
+		<div id="div_duoi">
+			<div class="input">
+				<input id="thang" type="number" name="" placeholder="Tháng"><input id="nam" type="number" name="" placeholder="Năm">
+			</div>
+			<div class="button">
+				<input type="button" name="" value="Tính số ngày" onclick="ngay_trong_thang()">
+			</div>
+			<div class="input">
+			<p id="ngay_thang_nam">Số ngày trong tháng</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function ngay_trong_thang() {
+			let thang = parseInt(document.getElementById('thang').value);
+			let nam = parseInt(document.getElementById('nam').value);
+			let ngay
+			switch(thang) {
+				case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12:
+				ngay = 31;
+				break;
+				case 4:
+				case 6:
+				case 9:
+				case 11:
+				ngay = 30;
+				break;
+				case 2:
+				if (nam % 400 == 0 || (nam%4==0 && nam % 100 !=0)) {
+					ngay = 29;
+				} else {
+					ngay = 28
+				}
+
+				default:
+				break;
+			}
+			document.getElementById('ngay_thang_nam').innerHTML = `Tháng ${thang} năm ${nam} có ${ngay} ngày`				
+		}
+	</script>
+</body>
+</html>
